@@ -1406,7 +1406,7 @@ namespace GlobleLibrary
         public void PurchasesOrderExcelExport(DataGridView dataGridView1, SaveFileDialog saveFileDialog1
             , string filePath
             , string PurcasesOrderNo, string PurchasesOrderDate, string CompanyName, string CompanyAddress
-            , string CompanyCity, string CompanyState, string companyPincode)
+            , string CompanyCity, string CompanyState, string companyPincode, bool isExcel)
         {
             try
             {
@@ -1431,7 +1431,7 @@ namespace GlobleLibrary
                 xlWorkSheet = (Excel.Worksheet)xlWorkBook.Worksheets.get_Item(1);
 
                 Excel.Range workSheet_range = xlWorkSheet.get_Range("A1", "F1");
-                workSheet_range.Font.Color = System.Drawing.Color.SteelBlue;
+                //workSheet_range.Font.Color = System.Drawing.Color.SteelBlue;
                 workSheet_range.Cells.Font.Size = 20;
                 workSheet_range.Merge(4);
                 workSheet_range.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
@@ -1457,8 +1457,8 @@ namespace GlobleLibrary
 
                 xlWorkSheet.Cells[9, 1] = "VENDOR";              
                 workSheet_range = xlWorkSheet.get_Range("A9", "A9");
-                workSheet_range.Interior.Color = System.Drawing.Color.SteelBlue;
-                workSheet_range.Font.Color = System.Drawing.Color.White;
+                //workSheet_range.Interior.Color = System.Drawing.Color.SteelBlue;
+                //workSheet_range.Font.Color = System.Drawing.Color.White;
                                             
 
                 xlWorkSheet.Cells[10, 1] = CompanyName;
@@ -1472,8 +1472,8 @@ namespace GlobleLibrary
                 workSheet_range.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignRight;
 
                 workSheet_range = xlWorkSheet.get_Range("G9", "G9");
-                workSheet_range.Interior.Color = System.Drawing.Color.SteelBlue;
-                workSheet_range.Font.Color = System.Drawing.Color.White;
+                //workSheet_range.Interior.Color = System.Drawing.Color.SteelBlue;
+                //workSheet_range.Font.Color = System.Drawing.Color.White;
 
                 xlWorkSheet.Cells[9,  7] = "Deliver To";
                 xlWorkSheet.Cells[10, 7] = "R P Printers";
@@ -1602,12 +1602,16 @@ namespace GlobleLibrary
 
                 if (result.Equals(DialogResult.OK))
                 {
+                    if (isExcel)
+                    {
+                        xlWorkBook.SaveAs(saveFileDialog1.FileName, Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
+                    }
+                    else
+                    {
+                        xlWorkBook.ExportAsFixedFormat(Excel.XlFixedFormatType.xlTypePDF, saveFileDialog1.FileName, 0, true, false, Type.Missing, Type.Missing, true, Type.Missing);
+                    }
 
-                    //xlWorkBook.SaveAs(saveFileDialog1.FileName, Excel.XlFileFormat.xlWorkbookNormal, misValue, misValue, misValue, misValue, Excel.XlSaveAsAccessMode.xlExclusive, misValue, misValue, misValue, misValue, misValue);
-                    //xlWorkBook.ExportAsFixedFormat(Excel.XlFixedFormatType.xlTypePDF, saveFileDialog1.FileName);
-                    xlWorkBook.ExportAsFixedFormat(Excel.XlFixedFormatType.xlTypePDF, saveFileDialog1.FileName, 0, true, false, Type.Missing, Type.Missing, true, Type.Missing);
                     xlWorkBook.Close(false, Type.Missing, Type.Missing);
-
                     xlApp.Quit();
                     //releaseObject(xlWorkSheet);
                     //releaseObject(xlWorkBook);
