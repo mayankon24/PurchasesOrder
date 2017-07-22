@@ -60,9 +60,15 @@ namespace PurchasesOrder
         #region Event
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (textPuchasesOrderNo.Text.Trim() == "")
+            //if ((string.IsNullOrEmpty( textPuchasesOrderNo.Text.Trim())))
+            //{
+            //    Common.MessageAlert("First enter Purchases Order No");
+            //    return;
+            //}
+            decimal result;
+            if (string.IsNullOrEmpty(textTax.Text.Trim()) || !decimal.TryParse(textTax.Text, out result))
             {
-                Common.MessageAlert("First enter Purchases Order No");
+                Common.MessageAlert("First enter Tax Percentage");
                 return;
             }
             if (dataGridView1.Rows.Count - 1 <= 0)
@@ -83,6 +89,23 @@ namespace PurchasesOrder
 
                 objPurchaseOrderEL.Company_id = SelectedCompany.Company_id;
                 objPurchaseOrderEL.Date = dateTimePickerPurchasesOrderDate.Value;
+                objPurchaseOrderEL.Tax_Percentage = Convert.ToDecimal(textTax.Text);
+
+                if (string.IsNullOrEmpty(txtOtherAmount.Text.Trim()))
+                {
+                    objPurchaseOrderEL.Other_Amount = 0;
+                }
+                else
+                {
+                    objPurchaseOrderEL.Other_Amount = Convert.ToDecimal(txtOtherAmount.Text);
+                }
+               
+
+
+                objPurchaseOrderEL.Requisitioner = txtRequisitioner.Text;
+                objPurchaseOrderEL.Credit_Term = txtCreditTerm.Text;
+                objPurchaseOrderEL.Shipping_Term = txtShippingTerm.Text;
+                objPurchaseOrderEL.Comments = txtComments.Text;
                 objPurchaseOrderEL.Purchases_Order_No = textPuchasesOrderNo.Text.Trim();
                 int PurchaseOrderId = objPurchasesOrderDL.Insert(objSqlTransaction, objPurchaseOrderEL);
 
@@ -94,6 +117,7 @@ namespace PurchasesOrder
                     objPurchasesOrderDetailEL.Item_id = Convert.ToInt32(dataGridView1.Rows[i].Cells["ItemName"].Value);
                     objPurchasesOrderDetailEL.Item_Quantity = Convert.ToDouble(dataGridView1.Rows[i].Cells["Item_Quantity"].Value);
                     objPurchasesOrderDetailEL.Item_Rate = Convert.ToDouble(dataGridView1.Rows[i].Cells["Item_Rate"].Value);
+                    objPurchasesOrderDetailEL.Item_Unit = dataGridView1.Rows[i].Cells["Item_Unit"].Value.ToString();
                     objPurchasesOrderDetailEL.Purchases_Order_Id = PurchaseOrderId;
                     lstPurchasesOrderDetailEL.Add(objPurchasesOrderDetailEL);
                 }
@@ -123,6 +147,12 @@ namespace PurchasesOrder
                 Common.MessageAlert("First enter Purchases Order No");
                 return;
             }
+            decimal result;
+            if (string.IsNullOrEmpty(textTax.Text.Trim()) || !decimal.TryParse(textTax.Text, out result))
+            {
+                Common.MessageAlert("First enter Tax Percentage");
+                return;
+            }
             if (dataGridView1.Rows.Count - 1 < 0)
             {
                 Common.MessageAlert("First Enter Item Detail");
@@ -143,6 +173,25 @@ namespace PurchasesOrder
                 objPurchaseOrderEL.Purchases_Order_Id = SelectedPurchasesOrder.Purchases_Order_Id;
                 objPurchaseOrderEL.Purchases_Order_No = textPuchasesOrderNo.Text.Trim();
                 objPurchaseOrderEL.Date = dateTimePickerPurchasesOrderDate.Value;
+                objPurchaseOrderEL.Tax_Percentage = Convert.ToDecimal( textTax.Text);
+
+
+                if (string.IsNullOrEmpty(txtOtherAmount.Text.Trim()))
+                {
+                    objPurchaseOrderEL.Other_Amount = 0;
+                }
+                else
+	            {
+                    objPurchaseOrderEL.Other_Amount = Convert.ToDecimal(txtOtherAmount.Text);
+                }
+                
+
+
+
+                objPurchaseOrderEL.Requisitioner = txtRequisitioner.Text;
+                objPurchaseOrderEL.Credit_Term = txtCreditTerm.Text;
+                objPurchaseOrderEL.Shipping_Term = txtShippingTerm.Text;
+                objPurchaseOrderEL.Comments = txtComments.Text;
                 objPurchasesOrderDL.Update(objSqlTransaction, objPurchaseOrderEL);
 
                 List<PurchasesOrderDetailEL> lstUpdatigPurchasesOrderDetailEL = new List<PurchasesOrderDetailEL>();
@@ -154,6 +203,7 @@ namespace PurchasesOrder
                     objPurchasesOrderDetailEL.Item_id = Convert.ToInt32(dataGridView1.Rows[i].Cells["ItemName"].Value);
                     objPurchasesOrderDetailEL.Item_Quantity = Convert.ToDouble(dataGridView1.Rows[i].Cells["Item_Quantity"].Value);
                     objPurchasesOrderDetailEL.Item_Rate = Convert.ToDouble(dataGridView1.Rows[i].Cells["Item_Rate"].Value);
+                    objPurchasesOrderDetailEL.Item_Unit = dataGridView1.Rows[i].Cells["Item_Unit"].Value.ToString();
 
                     if (Convert.ToInt32(dataGridView1.Rows[i].Cells["Purchase_Order_Detail_Id"].Value) == 0)
                     {
@@ -253,7 +303,26 @@ namespace PurchasesOrder
             cmbCompany.ValueMember = "Company_id";
             cmbCompany.SelectedIndexChanged += cmbCompany_SelectedIndexChanged;
         }
-               
+
+        private void Export(bool isExcel)
+        {
+            CompanyEL companyEL = SelectedCompany;
+            PurchaseOrderEL purchasesOrder = SelectedPurchasesOrder;
+            string filePath = @"\ExlPurchasesOrder.xlsx";
+
+            Common objCommon = new Common();
+            objCommon.PurchasesOrderExcelExport(dataGridView1
+                , saveFileDialog1
+                , filePath
+                , SelectedPurchasesOrder.Purchases_Order_No
+                , SelectedPurchasesOrder.Date.ToString("MMMM, dd yyyy")
+                , SelectedCompany.company_name
+                , SelectedCompany.address1
+                , SelectedCompany.city
+                , SelectedCompany.state
+                , SelectedCompany.pincode
+                , isExcel);
+        }
 
         #endregion
 
@@ -293,6 +362,12 @@ namespace PurchasesOrder
                 int PurchasesOrderId = SelectedPurchasesOrder.Purchases_Order_Id; //Convert.ToInt32(ListPurchaseOrder.SelectedValue);
                 textPuchasesOrderNo.Text = SelectedPurchasesOrder.Purchases_Order_No;
                 dateTimePickerPurchasesOrderDate.Value = SelectedPurchasesOrder.Date;
+                textTax.Text = SelectedPurchasesOrder.Tax_Percentage.ToString();
+                txtOtherAmount.Text = SelectedPurchasesOrder.Other_Amount.ToString();
+                txtRequisitioner.Text = SelectedPurchasesOrder.Requisitioner.ToString();
+                txtCreditTerm.Text = SelectedPurchasesOrder.Credit_Term.ToString();
+                txtShippingTerm.Text = SelectedPurchasesOrder.Shipping_Term.ToString();
+                txtComments.Text = SelectedPurchasesOrder.Comments.ToString();
 
                 PurchasesOrderDetailDL objPurchasesOrderDetailDL = new PurchasesOrderDetailDL();
                 List<PurchasesOrderDetailEL> lstPurchasesOrderDetail = objPurchasesOrderDetailDL.GetPurchasesOrderDetailByOrderId(PurchasesOrderId);
@@ -306,6 +381,7 @@ namespace PurchasesOrder
                     dataGridView1.Rows[i].Cells["ItemName"].Value = lstPurchasesOrderDetail[i].Item_id;
                     dataGridView1.Rows[i].Cells["Item_Quantity"].Value = lstPurchasesOrderDetail[i].Item_Quantity;
                     dataGridView1.Rows[i].Cells["Item_Rate"].Value = lstPurchasesOrderDetail[i].Item_Rate;
+                    dataGridView1.Rows[i].Cells["Item_Unit"].Value = lstPurchasesOrderDetail[i].Item_Unit;
                     dataGridView1.Rows[i].Cells["Total_Amount"].Value = lstPurchasesOrderDetail[i].Total_Amount;
                 }
             }
@@ -342,6 +418,24 @@ namespace PurchasesOrder
                 dataGridView1.Rows[rowIndex].Cells["Item_Rate"].Value = "";
             }
         }
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 6)
+            {
+                int DeliveryDetailId = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["Purchase_Order_Detail_Id"].Value);
+                string ItemName = Convert.ToString(dataGridView1.Rows[e.RowIndex].Cells["ItemName"].EditedFormattedValue);
+                if (DeliveryDetailId > 0)
+                {
+                    PackagingDetail objPackagingDetail = new PackagingDetail(DeliveryDetailId, SelectedCompany.company_name, ItemName);
+                    objPackagingDetail.ShowDialog();
+                }
+                else
+                {
+                    Common.MessageAlert("First Save This Item In Purchases Order");
+                }
+
+            }
+        }
 
         #endregion
 
@@ -368,21 +462,35 @@ namespace PurchasesOrder
 
         private void btnExcel_Click(object sender, EventArgs e)
         {
-            CompanyEL companyEL = SelectedCompany;
-            PurchaseOrderEL purchasesOrder = SelectedPurchasesOrder;
-            string filePath = @"\ExlPurchasesOrder.xlsx";
-
-            Common objCommon = new Common();
-            objCommon.PurchasesOrderExcelExport(dataGridView1
-                , saveFileDialog1
-                , filePath
-                , SelectedPurchasesOrder.Purchases_Order_No
-                , SelectedPurchasesOrder.Date.ToString("MMMM, dd yyyy")
-                , SelectedCompany.company_name
-                , SelectedCompany.address1
-                , SelectedCompany.city
-                , SelectedCompany.state
-                , SelectedCompany.pincode);
+           Export(true);
         }
+
+        private void btnPDF_Click(object sender, EventArgs e)
+        {
+            Export(false);
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int PurchasesOrderId = SelectedPurchasesOrder.Purchases_Order_Id; 
+                if (PurchasesOrderId > 0)
+                {
+                    ReportViewer objReportViewer = new ReportViewer(SelectedCompany.Company_id, SelectedCompany.company_name, PurchasesOrderId);
+                    objReportViewer.ShowDialog();
+                    objReportViewer.Dispose();
+                }
+                else
+                {
+                    Common.MessageAlert("First Save Delivery Order");
+                }
+            }
+            catch
+            {
+
+            }
+        }
+        
     }
 }

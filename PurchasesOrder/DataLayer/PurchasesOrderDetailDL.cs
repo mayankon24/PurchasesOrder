@@ -76,6 +76,7 @@ namespace PurchasesOrder.DataLayer
                     objPurchasesOrderDetailEL.Item_id = (int)dt.Rows[i]["Item_id"];
                     objPurchasesOrderDetailEL.Item_Quantity = Convert.ToDouble(dt.Rows[i]["Item_Quantity"]);
                     objPurchasesOrderDetailEL.Item_Rate = Convert.ToDouble(dt.Rows[i]["Item_Rate"]);
+                    objPurchasesOrderDetailEL.Item_Unit = dt.Rows[i]["Item_Unit"].ToString();
                     objPurchasesOrderDetailEL.Purchase_Order_Detail_Id = (int)dt.Rows[i]["Purchase_Order_Detail_Id"];
                     objPurchasesOrderDetailEL.Purchases_Order_Id = (int)dt.Rows[i]["Purchases_Order_Id"];
                     objPurchasesOrderDetailEL.Total_Amount = Convert.ToDecimal(dt.Rows[i]["Total_Amount"]);
@@ -101,6 +102,7 @@ namespace PurchasesOrder.DataLayer
                     objPurchasesOrderDetailEL.Item_id = (int)dt.Rows[i]["Item_id"];
                     objPurchasesOrderDetailEL.Item_Quantity = Convert.ToDouble(dt.Rows[i]["Item_Quantity"]);
                     objPurchasesOrderDetailEL.Item_Rate = Convert.ToDouble(dt.Rows[i]["Item_Rate"]);
+                    objPurchasesOrderDetailEL.Item_Unit = dt.Rows[i]["Item_Unit"].ToString();
                     objPurchasesOrderDetailEL.Purchase_Order_Detail_Id = (int)dt.Rows[i]["Purchase_Order_Detail_Id"];
                     objPurchasesOrderDetailEL.Purchases_Order_Id = (int)dt.Rows[i]["Purchases_Order_Id"];
                     objPurchasesOrderDetailEL.Total_Amount = Convert.ToDecimal(dt.Rows[i]["Total_Amount"]);
@@ -118,6 +120,7 @@ namespace PurchasesOrder.DataLayer
                                                      , objSQLHelper.SqlParam("@Item_Id", objPurchasesOrderDetailEL.Item_id, SqlDbType.Int)
                                                      , objSQLHelper.SqlParam("@Item_Quantity", objPurchasesOrderDetailEL.Item_Quantity, SqlDbType.Float)
                                                      , objSQLHelper.SqlParam("@Item_Rate", objPurchasesOrderDetailEL.Item_Rate, SqlDbType.Float)
+                                                     , objSQLHelper.SqlParam("@Item_Unit", objPurchasesOrderDetailEL.Item_Unit, SqlDbType.NVarChar)
                                                      , objSQLHelper.SqlParam("@Purchases_Order_Id", objPurchasesOrderDetailEL.Purchases_Order_Id, SqlDbType.Int)
                                                     );
             return Id;
@@ -131,16 +134,36 @@ namespace PurchasesOrder.DataLayer
                                              , objSQLHelper.SqlParam("@Item_Id", objPurchasesOrderDetailEL.Item_id, SqlDbType.Int)
                                              , objSQLHelper.SqlParam("@Item_Quantity", objPurchasesOrderDetailEL.Item_Quantity, SqlDbType.Float)
                                              , objSQLHelper.SqlParam("@Item_Rate", objPurchasesOrderDetailEL.Item_Rate, SqlDbType.Float)
+                                             , objSQLHelper.SqlParam("@Item_Unit", objPurchasesOrderDetailEL.Item_Unit, SqlDbType.NVarChar)
                                              , objSQLHelper.SqlParam("@Purchase_Order_Detail_Id", objPurchasesOrderDetailEL.Purchase_Order_Detail_Id, SqlDbType.Int)
                                            );
         }
         public void Delete(SqlTransaction objSqlTransaction, PurchasesOrderDetailEL objPurchasesOrderDetailEL)
         {
             SQLHelper objSQLHelper = new SQLHelper();
+
+            objSQLHelper.ExecuteDeleteProcedure("DeletePackagingDetails_By_PurchasesDetailId", objSqlTransaction
+                                                  , objSQLHelper.SqlParam("@Purchase_Order_Detail_Id", objPurchasesOrderDetailEL.Purchase_Order_Detail_Id, SqlDbType.Int)
+                                                 );
+
             int cpmpanyId = objSQLHelper.ExecuteDeleteProcedure("DeletePurchasesOrderDetail_ById", objSqlTransaction
                                                      , objSQLHelper.SqlParam("@Purchase_Order_Detail_Id", objPurchasesOrderDetailEL.Purchase_Order_Detail_Id, SqlDbType.Int)
                                                    );
 
+
+           
+
+        }
+
+        public DataSet GetPurchasesBillReportData(int companyId, int PurchasesyOrderId)
+        {
+            SQLHelper objSQLHelper = new SQLHelper();
+
+            DataSet ds = objSQLHelper.MyCustomExecuteSelectProcedureForDataSet("GetReportHeader", "GetReportBody"
+                                                    , objSQLHelper.SqlParam("@Company_id", companyId, SqlDbType.Int)
+                                                    , objSQLHelper.SqlParam("@Purchases_Order_Id", PurchasesyOrderId, SqlDbType.Int)
+                                                    );
+            return ds;
         }
     }
 }

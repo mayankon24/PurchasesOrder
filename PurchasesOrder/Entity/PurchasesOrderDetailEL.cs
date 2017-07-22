@@ -13,6 +13,7 @@ namespace PurchasesOrder.Entity
         public int Item_id { get; set; }
         public double Item_Quantity { get; set; }
         public double Item_Rate { get; set; }
+        public string Item_Unit { get; set; }
         public decimal Total_Amount { get; set; }
     }
 }

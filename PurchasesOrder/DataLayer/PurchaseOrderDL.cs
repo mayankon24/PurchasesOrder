@@ -91,6 +91,12 @@ namespace PurchasesOrder.DataLayer
                                                      , objSQLHelper.SqlParam("@Company_id", objPurchasesOrderEL.Company_id, SqlDbType.Int)
                                                      , objSQLHelper.SqlParam("@Date", objPurchasesOrderEL.Date, SqlDbType.DateTime)
                                                      , objSQLHelper.SqlParam("@Purchases_Order_No", objPurchasesOrderEL.Purchases_Order_No, SqlDbType.NVarChar)
+                                                     , objSQLHelper.SqlParam("@Tax_Percentage", objPurchasesOrderEL.Tax_Percentage, SqlDbType.Decimal)
+                                                     , objSQLHelper.SqlParam("@Other_Amount ", objPurchasesOrderEL.Other_Amount, SqlDbType.Decimal)
+                                                     , objSQLHelper.SqlParam("@Requisitioner ", objPurchasesOrderEL.Requisitioner, SqlDbType.NVarChar)
+                                                     , objSQLHelper.SqlParam("@Credit_Term ", objPurchasesOrderEL.Credit_Term, SqlDbType.NVarChar)
+                                                     , objSQLHelper.SqlParam("@Shipping_Term ", objPurchasesOrderEL.Shipping_Term, SqlDbType.NVarChar)
+                                                      , objSQLHelper.SqlParam("@Comments ", objPurchasesOrderEL.Comments, SqlDbType.NVarChar)
                                                     );
             return Id;
         }
@@ -101,6 +107,13 @@ namespace PurchasesOrder.DataLayer
                                              , objSQLHelper.SqlParam("@Date", objPurchasesOrderEL.Date, SqlDbType.DateTime)
                                              , objSQLHelper.SqlParam("@Purchases_Order_No", objPurchasesOrderEL.Purchases_Order_No, SqlDbType.NVarChar)
                                              , objSQLHelper.SqlParam("@Purchases_Order_Id", objPurchasesOrderEL.Purchases_Order_Id, SqlDbType.Int)
+                                             , objSQLHelper.SqlParam("@Tax_Percentage", objPurchasesOrderEL.Tax_Percentage, SqlDbType.Decimal)
+                                             , objSQLHelper.SqlParam("@Other_Amount ", objPurchasesOrderEL.Other_Amount, SqlDbType.Decimal)
+                                             , objSQLHelper.SqlParam("@Requisitioner ", objPurchasesOrderEL.Requisitioner, SqlDbType.NVarChar)
+                                             , objSQLHelper.SqlParam("@Credit_Term ", objPurchasesOrderEL.Credit_Term, SqlDbType.NVarChar)
+                                             , objSQLHelper.SqlParam("@Shipping_Term ", objPurchasesOrderEL.Shipping_Term, SqlDbType.NVarChar)
+                                             , objSQLHelper.SqlParam("@Comments", objPurchasesOrderEL.Comments, SqlDbType.NVarChar)                                             
+                                            
                                             );
 
 
@@ -131,6 +144,13 @@ namespace PurchasesOrder.DataLayer
                     objPurchasesOrderEL.Date = Convert.ToDateTime(dt.Rows[i]["Date"]);
                     objPurchasesOrderEL.Purchases_Order_Id = Convert.ToInt32(dt.Rows[i]["Purchases_Order_Id"]);
                     objPurchasesOrderEL.Purchases_Order_No = dt.Rows[i]["Purchases_Order_No"].ToString();
+                    objPurchasesOrderEL.Tax_Percentage = Convert.ToDecimal(dt.Rows[i]["Tax_Percentage"]);
+                     objPurchasesOrderEL.Other_Amount = Convert.ToDecimal(dt.Rows[i]["Other_Amount"]);
+                     objPurchasesOrderEL.Requisitioner = dt.Rows[i]["Requisitioner"].ToString();
+                     objPurchasesOrderEL.Credit_Term = dt.Rows[i]["Credit_Term"].ToString();
+                     objPurchasesOrderEL.Shipping_Term = dt.Rows[i]["Shipping_Term"].ToString();
+                    objPurchasesOrderEL.Comments = dt.Rows[i]["Comments"].ToString();
+                
                     lstPurchasesOrder.Add(objPurchasesOrderEL);
                 }
             }
@@ -149,6 +169,12 @@ namespace PurchasesOrder.DataLayer
                 objPurchasesOrderEL.Company_id = (int)dt.Rows[0]["Company_id"];
                 objPurchasesOrderEL.Purchases_Order_No = dt.Rows[0]["Purchases_Order_No"].ToString();
                 objPurchasesOrderEL.Date = Convert.ToDateTime(dt.Rows[0]["Date"]);
+                objPurchasesOrderEL.Tax_Percentage = Convert.ToDecimal(dt.Rows[0]["Tax_Percentage"]);
+                objPurchasesOrderEL.Other_Amount = Convert.ToDecimal(dt.Rows[0]["Other_Amount"]);
+                objPurchasesOrderEL.Requisitioner = dt.Rows[0]["Requisitioner"].ToString();
+                objPurchasesOrderEL.Credit_Term = dt.Rows[0]["Credit_Term"].ToString();
+                objPurchasesOrderEL.Shipping_Term = dt.Rows[0]["Shipping_Term"].ToString();
+                objPurchasesOrderEL.Comments = dt.Rows[0]["Comments"].ToString();
             }
 
             return objPurchasesOrderEL;
@@ -197,6 +223,12 @@ namespace PurchasesOrder.DataLayer
                     objPurchasesOrderEL.Date = Convert.ToDateTime(dt.Rows[i]["Date"]);
                     objPurchasesOrderEL.Purchases_Order_Id = Convert.ToInt32(dt.Rows[i]["Purchases_Order_Id"]);
                     objPurchasesOrderEL.Purchases_Order_No = dt.Rows[i]["Purchases_Order_No"].ToString();
+                    objPurchasesOrderEL.Tax_Percentage = Convert.ToDecimal(dt.Rows[i]["Tax_Percentage"]);
+                    objPurchasesOrderEL.Other_Amount = Convert.ToDecimal(dt.Rows[i]["Other_Amount"]);
+                    objPurchasesOrderEL.Requisitioner = dt.Rows[i]["Requisitioner"].ToString();
+                    objPurchasesOrderEL.Credit_Term = dt.Rows[i]["Credit_Term"].ToString();
+                    objPurchasesOrderEL.Shipping_Term = dt.Rows[i]["Shipping_Term"].ToString();
+                    objPurchasesOrderEL.Comments = dt.Rows[i]["Comments"].ToString();
                     lstPurchasesOrder.Add(objPurchasesOrderEL);
                 }
             }
