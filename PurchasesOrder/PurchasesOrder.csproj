@@ -73,6 +73,13 @@
     <Compile Include="PackagingDetail.Designer.cs">
       <DependentUpon>PackagingDetail.cs</DependentUpon>
     </Compile>
+    <Compile Include="PurchasesBill1.cs">
+      <DependentUpon>PurchasesBill1.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="ReportViewer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -126,6 +133,11 @@
     </Compile>
     <EmbeddedResource Include="PackagingDetail.resx">
       <DependentUpon>PackagingDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PurchasesBill1.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>PurchasesBill1.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="ReportViewer.resx">
       <DependentUpon>ReportViewer.cs</DependentUpon>
