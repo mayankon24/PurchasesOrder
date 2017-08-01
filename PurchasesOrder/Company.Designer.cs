@@ -62,6 +62,18 @@
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
+            this.company_Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.company_name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tin_no = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pan_no = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.phone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.address1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.city = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.state = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pincode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.email = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Fax_No = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.delivery_at = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -78,9 +90,8 @@
             this.panel1.Controls.Add(this.btnSave);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1220, 1036);
+            this.panel1.Size = new System.Drawing.Size(813, 673);
             this.panel1.TabIndex = 1;
             // 
             // groupBox1
@@ -89,11 +100,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.dataGridView1);
-            this.groupBox1.Location = new System.Drawing.Point(21, 337);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.groupBox1.Location = new System.Drawing.Point(14, 219);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.groupBox1.Size = new System.Drawing.Size(1180, 605);
+            this.groupBox1.Size = new System.Drawing.Size(787, 393);
             this.groupBox1.TabIndex = 76;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Company List";
@@ -118,6 +127,19 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeight = 60;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.company_Id,
+            this.company_name,
+            this.tin_no,
+            this.pan_no,
+            this.phone,
+            this.address1,
+            this.city,
+            this.state,
+            this.pincode,
+            this.email,
+            this.Fax_No,
+            this.delivery_at});
             this.dataGridView1.Cursor = System.Windows.Forms.Cursors.Default;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
@@ -128,8 +150,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.GridColor = System.Drawing.Color.Black;
-            this.dataGridView1.Location = new System.Drawing.Point(20, 29);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dataGridView1.Location = new System.Drawing.Point(13, 19);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
@@ -146,7 +167,7 @@
             this.dataGridView1.RowTemplate.ReadOnly = true;
             this.dataGridView1.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1142, 550);
+            this.dataGridView1.Size = new System.Drawing.Size(761, 357);
             this.dataGridView1.TabIndex = 74;
             // 
             // groupBox3
@@ -174,20 +195,19 @@
             this.groupBox3.Controls.Add(this.label4);
             this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Controls.Add(this.label2);
-            this.groupBox3.Location = new System.Drawing.Point(18, 22);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.groupBox3.Location = new System.Drawing.Point(12, 14);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.groupBox3.Size = new System.Drawing.Size(1184, 305);
+            this.groupBox3.Size = new System.Drawing.Size(789, 198);
             this.groupBox3.TabIndex = 73;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Company Detail";
             // 
             // textDelivertAt
             // 
-            this.textDelivertAt.Location = new System.Drawing.Point(183, 258);
+            this.textDelivertAt.Location = new System.Drawing.Point(122, 168);
+            this.textDelivertAt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textDelivertAt.Name = "textDelivertAt";
-            this.textDelivertAt.Size = new System.Drawing.Size(950, 26);
+            this.textDelivertAt.Size = new System.Drawing.Size(635, 20);
             this.textDelivertAt.TabIndex = 55;
             // 
             // label11
@@ -195,17 +215,19 @@
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.Black;
-            this.label11.Location = new System.Drawing.Point(18, 260);
+            this.label11.Location = new System.Drawing.Point(12, 169);
+            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(103, 25);
+            this.label11.Size = new System.Drawing.Size(75, 17);
             this.label11.TabIndex = 54;
             this.label11.Text = "Delivery at";
             // 
             // textFaxNo
             // 
-            this.textFaxNo.Location = new System.Drawing.Point(920, 217);
+            this.textFaxNo.Location = new System.Drawing.Point(613, 141);
+            this.textFaxNo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textFaxNo.Name = "textFaxNo";
-            this.textFaxNo.Size = new System.Drawing.Size(212, 26);
+            this.textFaxNo.Size = new System.Drawing.Size(143, 20);
             this.textFaxNo.TabIndex = 53;
             // 
             // label7
@@ -213,37 +235,41 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(836, 220);
+            this.label7.Location = new System.Drawing.Point(557, 143);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(75, 25);
+            this.label7.Size = new System.Drawing.Size(52, 17);
             this.label7.TabIndex = 52;
             this.label7.Text = "Fax No";
             // 
             // textPan
             // 
             this.textPan.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textPan.Location = new System.Drawing.Point(580, 69);
+            this.textPan.Location = new System.Drawing.Point(387, 45);
+            this.textPan.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textPan.Name = "textPan";
-            this.textPan.Size = new System.Drawing.Size(256, 30);
+            this.textPan.Size = new System.Drawing.Size(172, 23);
             this.textPan.TabIndex = 43;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(478, 69);
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(319, 45);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(82, 25);
+            this.label1.Size = new System.Drawing.Size(59, 17);
             this.label1.TabIndex = 51;
             this.label1.Text = "Pan No.";
             // 
             // textCompanyName
             // 
             this.textCompanyName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textCompanyName.Location = new System.Drawing.Point(183, 23);
+            this.textCompanyName.Location = new System.Drawing.Point(122, 15);
+            this.textCompanyName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textCompanyName.Name = "textCompanyName";
-            this.textCompanyName.Size = new System.Drawing.Size(656, 30);
+            this.textCompanyName.Size = new System.Drawing.Size(439, 23);
             this.textCompanyName.TabIndex = 41;
             // 
             // label12
@@ -251,64 +277,72 @@
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label12.Location = new System.Drawing.Point(18, 74);
+            this.label12.Location = new System.Drawing.Point(12, 48);
+            this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(116, 25);
+            this.label12.Size = new System.Drawing.Size(77, 17);
             this.label12.TabIndex = 50;
-            this.label12.Text = "Tin/Tan No.";
+            this.label12.Text = "GSTIN/UIN";
             // 
             // textPhone
             // 
-            this.textPhone.Location = new System.Drawing.Point(666, 217);
+            this.textPhone.Location = new System.Drawing.Point(444, 141);
+            this.textPhone.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textPhone.Name = "textPhone";
-            this.textPhone.Size = new System.Drawing.Size(162, 26);
+            this.textPhone.Size = new System.Drawing.Size(109, 20);
             this.textPhone.TabIndex = 49;
             // 
             // textAddress1
             // 
             this.textAddress1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textAddress1.Location = new System.Drawing.Point(183, 118);
+            this.textAddress1.Location = new System.Drawing.Point(122, 77);
+            this.textAddress1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textAddress1.Multiline = true;
             this.textAddress1.Name = "textAddress1";
-            this.textAddress1.Size = new System.Drawing.Size(397, 81);
+            this.textAddress1.Size = new System.Drawing.Size(266, 54);
             this.textAddress1.TabIndex = 44;
             // 
             // textEmail
             // 
-            this.textEmail.Location = new System.Drawing.Point(183, 215);
+            this.textEmail.Location = new System.Drawing.Point(122, 140);
+            this.textEmail.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textEmail.Name = "textEmail";
-            this.textEmail.Size = new System.Drawing.Size(397, 26);
+            this.textEmail.Size = new System.Drawing.Size(266, 20);
             this.textEmail.TabIndex = 48;
             // 
             // textpinCode
             // 
-            this.textpinCode.Location = new System.Drawing.Point(986, 171);
+            this.textpinCode.Location = new System.Drawing.Point(657, 111);
+            this.textpinCode.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textpinCode.Name = "textpinCode";
-            this.textpinCode.Size = new System.Drawing.Size(146, 26);
+            this.textpinCode.Size = new System.Drawing.Size(99, 20);
             this.textpinCode.TabIndex = 47;
             // 
             // textState
             // 
             this.textState.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textState.Location = new System.Drawing.Point(825, 168);
+            this.textState.Location = new System.Drawing.Point(550, 109);
+            this.textState.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textState.Name = "textState";
-            this.textState.Size = new System.Drawing.Size(144, 30);
+            this.textState.Size = new System.Drawing.Size(97, 23);
             this.textState.TabIndex = 46;
             // 
             // textCity
             // 
             this.textCity.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textCity.Location = new System.Drawing.Point(591, 166);
+            this.textCity.Location = new System.Drawing.Point(394, 108);
+            this.textCity.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textCity.Name = "textCity";
-            this.textCity.Size = new System.Drawing.Size(214, 30);
+            this.textCity.Size = new System.Drawing.Size(144, 23);
             this.textCity.TabIndex = 45;
             // 
             // txtTin
             // 
             this.txtTin.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTin.Location = new System.Drawing.Point(183, 69);
+            this.txtTin.Location = new System.Drawing.Point(122, 45);
+            this.txtTin.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtTin.Name = "txtTin";
-            this.txtTin.Size = new System.Drawing.Size(270, 30);
+            this.txtTin.Size = new System.Drawing.Size(181, 23);
             this.txtTin.TabIndex = 42;
             // 
             // label9
@@ -316,9 +350,10 @@
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.Black;
-            this.label9.Location = new System.Drawing.Point(18, 32);
+            this.label9.Location = new System.Drawing.Point(12, 21);
+            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(154, 25);
+            this.label9.Size = new System.Drawing.Size(108, 17);
             this.label9.TabIndex = 40;
             this.label9.Text = "Company Name";
             // 
@@ -327,9 +362,10 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.Black;
-            this.label8.Location = new System.Drawing.Point(18, 137);
+            this.label8.Location = new System.Drawing.Point(12, 89);
+            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(101, 25);
+            this.label8.Size = new System.Drawing.Size(72, 17);
             this.label8.TabIndex = 39;
             this.label8.Text = "Address1 ";
             // 
@@ -338,9 +374,10 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(586, 137);
+            this.label6.Location = new System.Drawing.Point(391, 89);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(46, 25);
+            this.label6.Size = new System.Drawing.Size(31, 17);
             this.label6.TabIndex = 38;
             this.label6.Text = "City";
             // 
@@ -349,9 +386,10 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(820, 137);
+            this.label5.Location = new System.Drawing.Point(547, 89);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(58, 25);
+            this.label5.Size = new System.Drawing.Size(41, 17);
             this.label5.TabIndex = 37;
             this.label5.Text = "State";
             // 
@@ -360,9 +398,10 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(981, 137);
+            this.label4.Location = new System.Drawing.Point(654, 89);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(93, 25);
+            this.label4.Size = new System.Drawing.Size(65, 17);
             this.label4.TabIndex = 36;
             this.label4.Text = "Pin Code";
             // 
@@ -371,9 +410,10 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(18, 215);
+            this.label3.Location = new System.Drawing.Point(12, 140);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(60, 25);
+            this.label3.Size = new System.Drawing.Size(42, 17);
             this.label3.TabIndex = 35;
             this.label3.Text = "Email";
             // 
@@ -382,9 +422,10 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(586, 218);
+            this.label2.Location = new System.Drawing.Point(391, 142);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(69, 25);
+            this.label2.Size = new System.Drawing.Size(49, 17);
             this.label2.TabIndex = 34;
             this.label2.Text = "Phone";
             // 
@@ -392,9 +433,10 @@
             // 
             this.btnCancel.AccessibleName = "SetStyle1";
             this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnCancel.Location = new System.Drawing.Point(234, 964);
+            this.btnCancel.Location = new System.Drawing.Point(156, 627);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(120, 43);
+            this.btnCancel.Size = new System.Drawing.Size(80, 28);
             this.btnCancel.TabIndex = 72;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = false;
@@ -404,9 +446,10 @@
             // 
             this.btnUpdate.AccessibleName = "SetStyle1";
             this.btnUpdate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnUpdate.Location = new System.Drawing.Point(435, 964);
+            this.btnUpdate.Location = new System.Drawing.Point(290, 627);
+            this.btnUpdate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(120, 43);
+            this.btnUpdate.Size = new System.Drawing.Size(80, 28);
             this.btnUpdate.TabIndex = 70;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = false;
@@ -416,9 +459,10 @@
             // 
             this.btnDelete.AccessibleName = "SetStyle1";
             this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnDelete.Location = new System.Drawing.Point(638, 964);
+            this.btnDelete.Location = new System.Drawing.Point(425, 627);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(120, 43);
+            this.btnDelete.Size = new System.Drawing.Size(80, 28);
             this.btnDelete.TabIndex = 71;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = false;
@@ -428,24 +472,97 @@
             // 
             this.btnSave.AccessibleName = "SetStyle1";
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnSave.Location = new System.Drawing.Point(30, 964);
+            this.btnSave.Location = new System.Drawing.Point(20, 627);
+            this.btnSave.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(120, 43);
+            this.btnSave.Size = new System.Drawing.Size(80, 28);
             this.btnSave.TabIndex = 69;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
+            // company_Id
+            // 
+            this.company_Id.HeaderText = "company_Id";
+            this.company_Id.Name = "company_Id";
+            this.company_Id.ReadOnly = true;
+            this.company_Id.Visible = false;
+            // 
+            // company_name
+            // 
+            this.company_name.HeaderText = "Company Name";
+            this.company_name.Name = "company_name";
+            this.company_name.ReadOnly = true;
+            // 
+            // tin_no
+            // 
+            this.tin_no.HeaderText = "GSTIN/UIN";
+            this.tin_no.Name = "tin_no";
+            this.tin_no.ReadOnly = true;
+            // 
+            // pan_no
+            // 
+            this.pan_no.HeaderText = "Pan No";
+            this.pan_no.Name = "pan_no";
+            this.pan_no.ReadOnly = true;
+            // 
+            // phone
+            // 
+            this.phone.HeaderText = "Phone";
+            this.phone.Name = "phone";
+            this.phone.ReadOnly = true;
+            // 
+            // address1
+            // 
+            this.address1.HeaderText = "Address1";
+            this.address1.Name = "address1";
+            this.address1.ReadOnly = true;
+            // 
+            // city
+            // 
+            this.city.HeaderText = "City";
+            this.city.Name = "city";
+            this.city.ReadOnly = true;
+            // 
+            // state
+            // 
+            this.state.HeaderText = "State";
+            this.state.Name = "state";
+            this.state.ReadOnly = true;
+            // 
+            // pincode
+            // 
+            this.pincode.HeaderText = "Pincode";
+            this.pincode.Name = "pincode";
+            this.pincode.ReadOnly = true;
+            // 
+            // email
+            // 
+            this.email.HeaderText = "Email";
+            this.email.Name = "email";
+            this.email.ReadOnly = true;
+            // 
+            // Fax_No
+            // 
+            this.Fax_No.HeaderText = "Fax No";
+            this.Fax_No.Name = "Fax_No";
+            this.Fax_No.ReadOnly = true;
+            // 
+            // delivery_at
+            // 
+            this.delivery_at.HeaderText = "Delivery At";
+            this.delivery_at.Name = "delivery_at";
+            this.delivery_at.ReadOnly = true;
+            // 
             // company
             // 
             this.AccessibleName = "SetStyle1";
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1220, 1036);
+            this.ClientSize = new System.Drawing.Size(813, 673);
             this.ControlBox = false;
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "company";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Company";
@@ -491,6 +608,17 @@
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.TextBox textDelivertAt;
         private System.Windows.Forms.Label label11;
-
+        private System.Windows.Forms.DataGridViewTextBoxColumn company_Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn company_name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tin_no;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pan_no;
+        private System.Windows.Forms.DataGridViewTextBoxColumn phone;
+        private System.Windows.Forms.DataGridViewTextBoxColumn address1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn city;
+        private System.Windows.Forms.DataGridViewTextBoxColumn state;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pincode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn email;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Fax_No;
+        private System.Windows.Forms.DataGridViewTextBoxColumn delivery_at;
     }
 }

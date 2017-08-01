@@ -251,7 +251,25 @@ namespace PurchasesOrder
 
                 dataGridView1.SelectionChanged -= dataGridView1_SelectionChanged;
                 dataGridView1.Click-= dataGridView1_Click;
-                dataGridView1.DataSource = CompanyList;
+
+                for (int i = 0; i < CompanyList.Count; i++)
+                {
+                    dataGridView1.Rows.Add();
+
+                    dataGridView1.Rows[i].Cells["Company_id"].Value = CompanyList[i].Company_id;
+                    dataGridView1.Rows[i].Cells["company_name"].Value = CompanyList[i].company_name;
+                    dataGridView1.Rows[i].Cells["tin_no"].Value = CompanyList[i].tin_no;
+                    dataGridView1.Rows[i].Cells["pan_no"].Value = CompanyList[i].pan_no;
+                    dataGridView1.Rows[i].Cells["phone"].Value = CompanyList[i].phone;
+                    dataGridView1.Rows[i].Cells["address1"].Value = CompanyList[i].address1;
+                    dataGridView1.Rows[i].Cells["city"].Value = CompanyList[i].city;
+                    dataGridView1.Rows[i].Cells["state"].Value = CompanyList[i].state;
+                    dataGridView1.Rows[i].Cells["pincode"].Value = CompanyList[i].pincode;
+                    dataGridView1.Rows[i].Cells["email"].Value = CompanyList[i].email;
+                    dataGridView1.Rows[i].Cells["phone"].Value = CompanyList[i].phone;
+                    dataGridView1.Rows[i].Cells["Fax_No"].Value = CompanyList[i].Fax_No;
+                    dataGridView1.Rows[i].Cells["delivery_at"].Value = CompanyList[i].delivery_at;
+                }               
                 dataGridView1.Columns["Company_id"].Visible = false;
                 dataGridView1.SelectionChanged += dataGridView1_SelectionChanged;
                 dataGridView1.Click += dataGridView1_Click;
